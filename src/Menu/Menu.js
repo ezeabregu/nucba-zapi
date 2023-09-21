@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Foods } from '../data/data';
-import { Food, FoodGrid } from './FoodGrid';
+import { Food, FoodGrid, FoodLabel } from './FoodGrid';
 
 const MenuStyled = styled.div`
   height: 1000px;
@@ -9,16 +9,18 @@ const MenuStyled = styled.div`
   z-index: 3;
 `;
 
-export const Menu = () => {
+export const Menu = ({ setOpenFood }) => {
   return (
     <MenuStyled>
-      {Object.keys(Foods).map((sectionKey) => {
+      {Object.entries(Foods).map(([sectionName, foods]) => {
         return (
           <>
-            <h3>{sectionKey}</h3>
+            <h3>{sectionName}</h3>
             <FoodGrid>
-              {Foods[sectionKey].map((food) => (
-                <Food img={food.img}>{food.name}</Food>
+              {foods.map((food) => (
+                <Food img={food.img} onClick={() => setOpenFood(food)}>
+                  <FoodLabel>{food.name}</FoodLabel>
+                </Food>
               ))}
             </FoodGrid>
           </>

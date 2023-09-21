@@ -5,7 +5,7 @@ import imgLogo from '../assets/hero.png';
 const NavbarStyled = styled.div`
   padding: 10px;
   position: fixed;
-  background-color: #fff;
+  background-color: #131415;
   width: 100%;
   z-index: 999;
 `;
